@@ -1,0 +1,13 @@
+body {
+    background: none repeat scroll 0 0 #FFFFFF;
+    color: #222222;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+.panel {
+    margin: 20px;
+}
+
+.panel-body {
+    margin: 2px;
+}
