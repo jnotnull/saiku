@@ -1,4 +1,3 @@
-
 // echarts渲染引擎
 var eChartsRender = {
 
@@ -24,7 +23,7 @@ var eChartsRender = {
 
         var option = {
             title: {
-                text: 'saiku转换'
+                text: 'Saiku-echarts'
             },
             tooltip: {},
             legend: {
@@ -76,15 +75,61 @@ var params = {
     successcallback: successcallback
 }
 
-// 发送请求
-eChartsRender.sendRequest(params, document.getElementById('main'));
+// 获得登录会话
+var getSession = function(callback) {
+    $.ajax({
+        type: "GET",
+        url: "/saiku/rest/saiku/session",
+        data: {},
+        success: function(data) {
+            if (data.sessionid) {
+                callback.apply(this);
+            } else {
+                auth(function() {
+                    callback.apply(this);
+                })
+            }
+        },
+        error: function(error) {
+            auth(function() {
+                callback.apply(this);
+            })
+        }
+    })
+}
+
+// 执行请求
+var doSendRequest = function() {
+    eChartsRender.sendRequest(params, document.getElementById('main'));
+}
+
+// 入口
+getSession(doSendRequest);
+
+// 进行登录授权
+var auth = function(successcallback) {
+    $.ajax({
+        type: "POST",
+        url: "/saiku/rest/saiku/session",
+        data: { username: "admin", password: "admin", isadmin: true, language: 'zh' },
+        success: function(data) {
+            successcallback.apply(this)
+        },
+        error: function(error) {
+            console.log("auth error")
+        },
+        contentType: 'application/x-www-form-urlencoded',
+        dataType: 'text',
+        cache: false,
+        async: true
+    });
+}
 
 // 对saiku数据进行转换
 var convertData = function(json) {
+    
     var result = new Array();
-
     var array = json.cellset;
-
     var columnHeader = new Array(json.width);
 
     for (var i = 0; i < array.length; i++) {
