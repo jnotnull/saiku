@@ -1,3 +1,35 @@
+# saiku-echarts
+
+##1.功能说明
+###1.支持saiku数据缓存，缓存时间为一天
+
+
+##2.代码地图
+
+    ├── css
+    │   └── index.css
+    ├── dashboard.html
+    ├── favicon.ico
+    ├── images
+    ├── index.html
+    └── js
+        ├── authorization.js
+        ├── config
+        │   └── echartsInstanceConfigs.js
+        ├── eChartsRender.js
+        ├── index.js
+        ├── lib
+        │   ├── echarts.js
+        │   └── jquery.min.js
+        ├── render
+        │   ├── barRender.js
+        │   ├── lineRender.js
+        │   └── pieRender.js
+        └── utils
+            ├── convertor.js
+            └── utils.js
+
+
 # saiku3.9 问题汇总
 
 ##执行mvn clean install -DskipTests遇到的问题：

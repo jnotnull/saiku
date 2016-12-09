@@ -2,6 +2,7 @@ body {
     background: none repeat scroll 0 0 #FFFFFF;
     color: #222222;
     font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    height: 100%
 }
 
 .panel {
@@ -10,4 +11,44 @@ body {
 
 .panel-body {
     margin: 2px;
+}
+
+html {
+    height:95%; width: 95%
+}
+
+body {
+    height:100%; width: 100%
+}
+
+#main {
+    height:100%; width: 100%
+}
+
+.spinner {
+    position: absolute;
+    display: block;
+    top: 30%;
+    left: 50%;
+    text-align: center;
+}
+
+#main-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 50px;
+}
+
+.right-container {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    padding: 0;
+    padding-left: 5px;
+    border: none;
+    z-index: 30;
+    background: #f3f3f3;
 }
